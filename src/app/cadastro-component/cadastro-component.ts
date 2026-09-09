@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Pessoa,  } from '../modelo/pessoa';
 import { Service } from '../service/pessoa-service';
+import { FormsModule } from '@angular/forms';
 
 @Component({
-  imports: [],
+  imports: [FormsModule],
   selector: 'app-cadastro-component',
   styleUrl: './cadastro-component.css',
   templateUrl: './cadastro-component.html',
@@ -18,6 +19,8 @@ telefone = ''
 email = ''
 senha = ''
 
+constructor(private service: Service) {}
+
 exibeDados(){
 console.log(this.nome, this.cpf, this.data_nascimento, this.sexo, this.telefone, this.email, this.senha )
 }
@@ -31,6 +34,20 @@ enviaDadosPessoa() {
   pessoa.data_nascimento = this.data_nascimento;
   pessoa.telefone = this.telefone;
   pessoa.email = this.email;
+  pessoa.senha = this.senha;
+
+  this.service.cadastroPessoa(pessoa).subscribe(
+    (response) => {
+      console.log('Pessoa cadastrada com sucesso:', response);
+      this.limpar();
+    },
+    (error) => {
+      console.error('Erro ao cadastrar pessoa:', error);
+    }
+  );
+
+  this.exibeDados();
+  this.limpar();
 }
 limpar() {
   this.nome = ''

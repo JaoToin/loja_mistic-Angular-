@@ -42,8 +42,14 @@ input{
   border-top: none;
   border-left: none;
   border-right: none;
-  border-color: var(--cor-principal);
+  border-color: rgb(37, 12, 74);
   box-sizing: border-box;
+}
+
+input:focus{
+  outline: none;
+  border-color: rgb(63, 14, 101);
+  box-shadow: 0px 0px 5px rgb(63, 14, 101);
 }
 
 input{
@@ -78,23 +84,38 @@ button{
   border-radius: 10px;
 }
 
-#bntAdd{
-  background-color: var(--cor-principal);
+#BtnAdd{
+  background-color: rgb(63, 14, 101);
   color: var(--of);
+  color: white;
 }
 
-#bntAdd:hover{
+#BtnAdd:hover{
   opacity: 0.5;
   transform: translateY(-5);
 }
 
-#bntLimpar{
-  background-color: var(--remover);
+#BtnLimpar{
+  background-color: red;
   color: var(--of);
 }
 
-#bntLimpar:hover{
+#BtnLimpar:hover{
   opacity: 0.5;
   transform: translateY(-5);
 
+}
+
+responsive{
+  @media screen and (max-width: 600px){
+    #div-form{
+      width: 100%;
+      max-width: 100%;
+      min-height: 650px;
+      margin: 20px auto;
+      padding: 25px;
+      box-shadow: 5px 5px 5px 5px rgb(95, 0, 139);
+      border-radius: 10px;
+    }
+  }
 }
