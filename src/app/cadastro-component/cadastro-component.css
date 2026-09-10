@@ -1,73 +1,122 @@
-#div-form{
+#div-form {
   width: 100%;
   max-width: 800px;
   min-height: 650px;
   margin: 20px auto;
   padding: 25px;
-  box-shadow: 5px 5px 5px 5px rgb(95, 0, 139);
+  /* Sombra neon vando em todas as direções (sem deslocamento x/y, com grande expansão) */
+  box-shadow: 0 0 25px 8px rgba(176, 38, 255, 0.6);
   border-radius: 10px;
-
+  border: 1px solid rgba(176, 38, 255, 0.3);
+   box-shadow: 0 0 25px 8px rgba(176, 38, 255, 0.6);
+  border-radius: 10px;
+  border: 1px solid rgba(176, 38, 255, 0.3);
 }
+/* 1. ADICIONAR a cor de fundo preta/grafite no formulário */
+#div-form {
+  background-color: #0d0a12; /* Adicione apenas esta linha dentro do seu #div-form */
 
-h1{
-  margin: 20px 0px 35px 0px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 1.8em;
-
-}
-
-
-input[type=radio]{
   width: 100%;
-  max-width: 25px;
-  height: 100%;
-  max-height: 25px;
-  margin: 0px 10px;
-
+  max-width: 800px;
+  min-height: 650px;
+  margin: 20px auto;
+  padding: 25px;
+  box-shadow: 0 0 25px 8px rgba(176, 38, 255, 0.6);
+  border-radius: 10px;
+  border: 1px solid rgba(176, 38, 255, 0.3);
 }
 
-
-label{
-  display: block;
-  margin: 10px;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-input{
+/* 2. ATUALIZAR as propriedades do input para o texto ficar visível no fundo escuro */
+input {
+  width: 100%;
+  max-width: 650px;
   padding: 10px;
   font-size: 14px;
   border-radius: 10px;
   border-top: none;
   border-left: none;
   border-right: none;
-  border-color: rgb(37, 12, 74);
+  border-bottom: 2px solid #7E22CE;
   box-sizing: border-box;
+  margin: 5px;
+  background-color: rgba(255, 255, 255, 0.05); /* ALTERAR: Fundo levemente visível */
+  color: #ffffff; /* ALTERAR: Texto digitado em branco (antes estava #333) */
+  transition: all 0.3s ease;
 }
 
-input:focus{
+/* 3. ADICIONAR estilo para a cor do placeholder (o texto "Informe seu nome...") */
+input::placeholder {
+  color: #a1a1aa;
+}
+
+/* 4. ADICIONAR um fundo leve no foco do input */
+input:focus {
   outline: none;
-  border-color: rgb(63, 14, 101);
-  box-shadow: 0px 0px 5px rgb(63, 14, 101);
+  border-color: #B026FF;
+  background-color: rgba(255, 255, 255, 0.08); /* Adicione esta linha */
+  box-shadow: 0 0 10px #B026FF;
 }
 
-input{
+h1 {
+  margin: 20px 0px 35px 0px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.8em;
+  color: #B026FF; /* Roxo neon */
+  text-shadow: 0 0 8px rgba(176, 38, 255, 0.4);
+}
+
+input[type=radio] {
+  width: 100%;
+  max-width: 25px;
+  height: 100%;
+  max-height: 25px;
+  margin: 0px 10px;
+  accent-color: #B026FF; /* Cor neon para o campo de rádio */
+}
+
+#div-sexo{
+
+  color: white
+}
+
+label {
+  display: block;
+  margin: 10px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #E9D5FF;
+}
+
+input {
   width: 100%;
   max-width: 650px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 10px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 2px solid #7E22CE;
+  box-sizing: border-box;
+  margin: 5px;
+  background-color: transparent;
+  color: #333;
+  transition: all 0.3s ease;
 }
 
+input:focus {
+  outline: none;
+  border-color: #B026FF;
+  box-shadow: 0 0 10px #B026FF; /* Brilho neon ao focar */
+}
 
-.input02{
+.input02 {
   width: 100%;
   max-width: 350px;
 }
 
-input{
-  margin: 5px;
-}
-
-#div-bnts{
+#div-bnts {
   width: 100%;
   height: 180px;
   display: flex;
@@ -75,46 +124,50 @@ input{
   justify-content: center;
 }
 
-button{
+button {
   width: 200px;
   height: 35px;
   cursor: pointer;
   border: none;
   margin: 10px;
   border-radius: 10px;
+  font-weight: bold;
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
 }
 
-#BtnAdd{
-  background-color: rgb(63, 14, 101);
+#bntAdd {
+  background-color: #7E22CE;
   color: white;
+  box-shadow: 0 0 10px rgba(176, 38, 255, 0.4);
 }
 
-#BtnAdd:hover{
-  opacity: 0.5;
-  transform: translateY(-5);
+#bntAdd:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px #B026FF;
 }
 
-#BtnLimpar{
-  background-color: red;
-  color: var(--of);
+#bntLimpar {
+  background-color: #FF0055; /* Rosa/Vermelho neon para contraste */
+  color: white;
+  box-shadow: 0 0 10px rgba(255, 0, 85, 0.4);
 }
 
-#BtnLimpar:hover{
-  opacity: 0.5;
-  transform: translateY(-5);
-
+#bntLimpar:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px #FF0055;
 }
 
-responsive{
-  @media screen and (max-width: 600px){
-    #div-form{
-      width: 100%;
-      max-width: 100%;
-      min-height: 650px;
-      margin: 20px auto;
-      padding: 25px;
-      box-shadow: 5px 5px 5px 5px rgb(95, 0, 139);
-      border-radius: 10px;
-    }
+/* Media query corrigida */
+@media screen and (max-width: 600px) {
+  #div-form {
+    width: 100%;
+    max-width: 100%;
+    min-height: 650px;
+    margin: 20px auto;
+    padding: 25px;
+    box-shadow: 0 0 20px 5px rgba(176, 38, 255, 0.6);
+    border-radius: 10px;
   }
 }

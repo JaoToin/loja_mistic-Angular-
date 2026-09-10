@@ -1,51 +1,59 @@
-#cabecalho, #logo, #menu-ul{
+#cabecalho, #logo, #menu-ul {
   display: flex;
   align-items: center;
 }
 
-
-#cabecalho{
+#cabecalho {
   width: 100%;
-  height: 25%;
-  padding: 15px;
-  justify-content:space-between;
-  background-color: #44007c;
-  margin:0px
+  padding: 15px 40px; /* Mais espaçamento nas laterais */
+  justify-content: space-between;
+
+  /* Fundo grafite/preto para harmonizar com o formulário */
+  background-color: #0d0a12;
+
+  /* Linha inferior brilhante em roxo neon */
+  border-bottom: 2px solid #7E22CE;
+  box-shadow: 0 4px 20px rgba(176, 38, 255, 0.4);
+  margin: 0px;
 }
 
-#logo, #menu-ul{
-  height: 100%;
-  justify-content: center;
-  color: white;
+#logo {
+  /* Removemos a altura fixa para alinhar pelo conteúdo */
+  display: flex;
+  align-items: center;
 }
 
-#logo{
-  width: 200px;
-}
-
-#menu-ul{
-  width: 790px;
+#menu-ul {
+  /* Substituído a largura fixa por flex para alinhar totalmente à direita */
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px; /* Espaçamento uniforme entre os links */
   list-style: none;
-
 }
 
-.lnk-menu{
+.lnk-menu {
   text-decoration: none;
-  padding: 0px 10px;
-  font-size: 16px;
-  color: rgb(255, 255, 255);
-  transition: 0.5s ease;
-
+  padding: 8px 16px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #E9D5FF; /* Roxo bem claro para leitura no fundo escuro */
+  border-radius: 6px;
+  transition: all 0.3s ease;
 }
 
-.lnk-menu:hover{
-  opacity: 0.5;
+.lnk-menu:hover {
+  color: #ffffff;
+  background-color: rgba(176, 38, 255, 0.2); /* Fundo sutil ao passar o mouse */
+  text-shadow: 0 0 8px #B026FF;
 }
 
-#titulo{
+#titulo {
   text-transform: uppercase;
-  color: rgb(255, 255, 255);
-  border: 1px solid rgb(255, 255, 255);
-  padding: 3px;
-  margin: 0px 5px 0px 0px ;
+  font-weight: bold;
+  color: #ffffff;
+  border: 1px solid #B026FF;
+  box-shadow: 0 0 10px rgba(176, 38, 255, 0.6);
+  padding: 4px 8px;
+  margin-right: 8px;
+  border-radius: 4px;
 }
