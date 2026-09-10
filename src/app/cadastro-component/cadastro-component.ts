@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { Pessoa,  } from '../modelo/pessoa';
 import { Service } from '../service/pessoa-service';
 import { FormsModule } from '@angular/forms';
+import { ChangeDetectorRef } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   imports: [FormsModule],
@@ -18,13 +21,24 @@ sexo = ''
 telefone = ''
 email = ''
 senha = ''
+editar = false
+idPessoa = 0
 
-constructor(private service: Service) {}
+constructor(private service: Service, private cdr: ChangeDetectorRef, private route: ActivatedRoute) {}
 
 exibeDados(){
 console.log(this.nome, this.cpf, this.data_nascimento, this.sexo, this.telefone, this.email, this.senha )
 }
 
+
+ngOnInit() {
+  this.idPessoa = Number(this.route.snapshot.paramMap.get('id'))
+
+  if (this.idPessoa > 0) {
+    this.editar = true
+    this.carregaCampo(this.idPessoa)
+  }
+}
 enviaDadosPessoa() {
   const pessoa = new Pessoa();
   pessoa.idpessoa = this.id > 0 ? this.id : this.id;
@@ -48,6 +62,24 @@ enviaDadosPessoa() {
 
   this.exibeDados();
   this.limpar();
+}
+carregaCampo(idPessoa: number) {
+  this.service.listarPessoa(idPessoa)
+    .subscribe({
+      next: (objPessoa) => {
+        this.id = objPessoa.idpessoa
+        this.nome = objPessoa.nome
+        this.cpf = objPessoa.cpf
+        this.sexo = objPessoa.sexo
+        this.telefone = objPessoa.telefone
+        this.email = objPessoa.email
+
+
+        this.cdr.detectChanges()
+      }, error: (msgErro) => {
+        console.log("Erro ao Listar  o Pessoa ", msgErro)
+      }
+    })
 }
 limpar() {
   this.nome = ''
