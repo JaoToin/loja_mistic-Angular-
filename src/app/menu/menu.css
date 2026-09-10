@@ -57,3 +57,62 @@
   margin-right: 8px;
   border-radius: 4px;
 }
+
+#logo {
+  width: auto; /* Remove a limitação de largura para o texto crescer livremente */
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espaço entre o quadrado 'SANTA' e a palavra 'Noite' */
+}
+
+#titulo {
+  font-size: 24px; /* Aumenta o tamanho da fonte de 'SANTA' */
+  font-weight: 800; /* Deixa o texto mais espesso/negrito */
+  letter-spacing: 2px; /* Espaçamento entre as letras */
+  color: #ffffff;
+
+  /* Borda roxa neon mais espessa */
+  border: 2px solid #B026FF;
+  border-radius: 6px;
+  padding: 6px 14px; /* Aumenta o tamanho da caixa interna */
+  margin: 0;
+
+  /* Brilho neon duplo para destacar bastante no fundo escuro */
+  box-shadow: 0 0 12px rgba(176, 38, 255, 0.8),
+              inset 0 0 8px rgba(176, 38, 255, 0.4);
+  text-shadow: 0 0 5px #B026FF;
+}
+
+/* Estilização para o texto 'Noite' que fica ao lado de 'SANTA' */
+#logo span:not(#titulo),
+#logo {
+  font-size: 20px; /* Aumenta o texto 'Noite' */
+  font-weight: 500;
+  color: #E9D5FF; /* Roxo bem claro para destacar do fundo escuro */
+  text-shadow: 0 0 6px rgba(176, 38, 255, 0.5);
+}
+
+#cabecalho {
+  width: 100%;
+  padding: 15px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Distribui o espaço entre logo e menu */
+  background-color: #0d0a12;
+  border-bottom: 2px solid #7E22CE;
+  box-shadow: 0 4px 20px rgba(176, 38, 255, 0.4);
+  margin: 0px;
+  position: relative; /* Garante o alinhamento correto */
+}
+
+#logo {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centraliza o conteúdo interno do logo */
+  gap: 10px;
+
+  /* Se você quiser centralizar o logo no MEIO da tela inteira (entre as pontas do cabeçalho): */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}

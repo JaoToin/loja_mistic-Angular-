@@ -59,4 +59,9 @@ export class TabelaComponent {
     calcIdade(data_nascimento: Date): number {
     return this.service.calcularIdade(data_nascimento)
   }
+
+
+  voltar(){
+  this.router.navigate(['/cadastro']);
+}
 }

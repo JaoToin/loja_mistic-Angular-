@@ -115,50 +115,75 @@ input:focus {
   width: 100%;
   max-width: 350px;
 }
-
-#div-bnts {
-  width: 100%;
-  height: 180px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-button {
+/* Base comum para todos os botões */
+button, .btn {
   width: 200px;
-  height: 35px;
+  height: 40px;
   cursor: pointer;
   border: none;
   margin: 10px;
   border-radius: 10px;
   font-weight: bold;
-  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+  font-size: 15px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;}
+  #div-bnts {
+  width: 100%;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Centraliza os 3 botões horizontalmente */
+  gap: 15px; /* Cria um espaçamento uniforme entre eles */
+  flex-wrap: wrap; /* Permite que eles se adaptem bem em telas menores */
+  margin: 20px 0;
 }
 
-#bntAdd {
-  background-color: #7E22CE;
-  color: white;
-  box-shadow: 0 0 10px rgba(176, 38, 255, 0.4);
+
+/* 1. Botão Cadastrar (Roxo Profundo / Magia de Hécate) */
+#bntAdd, .btn-cadastrar {
+  background-color: #5b21b6;
+  color: #ffffff;
+  border: 1px solid #7c3aed;
+  box-shadow: 0 0 12px rgba(124, 58, 237, 0.6);
+
 }
 
-#bntAdd:hover {
-  opacity: 0.9;
+#bntAdd:hover, .btn-cadastrar:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 15px #B026FF;
+  box-shadow: 0 0 18px #8b5cf6;
 }
 
-#bntLimpar {
-  background-color: #FF0055; /* Rosa/Vermelho neon para contraste */
-  color: white;
-  box-shadow: 0 0 10px rgba(255, 0, 85, 0.4);
+/* 2. Botão Limpar Dados (Vermelho Carmesim / Fogo das Tochas) */
+#bntLimpar, .btn-limpar {
+  background-color: #9f1239;
+  color: #ffffff;
+  border: 1px solid #e11d48;
+  box-shadow: 0 0 12px rgba(225, 29, 72, 0.6);
 }
 
-#bntLimpar:hover {
-  opacity: 0.9;
+#bntLimpar:hover, .btn-limpar:hover {
   transform: translateY(-2px);
-  box-shadow: 0 0 15px #FF0055;
+  box-shadow: 0 0 18px #f43f5e;
+}
+#bntListar, .btn-listar {
+  /* Cinza escuro neutro metálico no fundo */
+  background-color: #27272a;
+  color: #f4f4f5;
+
+  /* Borda cinza prata clara */
+  border: 1px solid #d4d4d8;
+
+  /* Brilho neon prateado branco/cinza puro */
+  box-shadow: 0 0 12px rgba(212, 212, 216, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
 }
 
+#bntListar:hover, .btn-listar:hover {
+  color: #ffffff;
+  background-color: #3f3f46;
+  transform: translateY(-2px);
+  /* Aumenta o brilho prateado lunar */
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.8);
+}
 /* Media query corrigida */
 @media screen and (max-width: 600px) {
   #div-form {

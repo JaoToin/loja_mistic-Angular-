@@ -4,6 +4,7 @@ import { Service } from '../service/pessoa-service';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   imports: [FormsModule],
@@ -24,7 +25,7 @@ senha = ''
 editar = false
 idPessoa = 0
 
-constructor(private service: Service, private route: ActivatedRoute, private cdr: ChangeDetectorRef) { }
+constructor(private service: Service, private route: ActivatedRoute, private cdr: ChangeDetectorRef, private router: Router) { }
 
 exibeDados(){
 console.log(this.nome, this.cpf, this.data_nascimento, this.sexo, this.telefone, this.email, this.senha )
@@ -120,5 +121,11 @@ limpar() {
   this.email = ''
   this.senha = ''
 }
+
+direcao(){
+  this.router.navigate(['/tabela']);
+}
+
+
 }
 
