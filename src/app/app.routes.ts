@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
 import { CadastroComponent } from './cadastro-component/cadastro-component';
-import { ListaOculta } from './lista-oculta/lista-oculta';
+import { TabelaComponent } from './tabela-component/tabela-component';
 
 export const routes: Routes = [
 {
     path:'',
-    redirectTo:"/listaoculta",
+    redirectTo:"/cadastro",
     pathMatch: 'full'
 },
 {
@@ -17,11 +17,12 @@ export const routes: Routes = [
   path:"cadastro/:id",
   component:CadastroComponent
 },
+
 {
-  path:"listaoculta",
-  component:ListaOculta
-},
+  path:"tabela",
+  component: TabelaComponent
+}
 
 
 
-];
+]

@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ListaOculta } from './lista-oculta';
+import { TabelaComponent } from './tabela-component';
 
-describe('ListaOculta', () => {
-  let component: ListaOculta;
-  let fixture: ComponentFixture<ListaOculta>;
+describe('TabelaComponent', () => {
+  let component: TabelaComponent;
+  let fixture: ComponentFixture<TabelaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ListaOculta],
+      imports: [TabelaComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ListaOculta);
+    fixture = TestBed.createComponent(TabelaComponent);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

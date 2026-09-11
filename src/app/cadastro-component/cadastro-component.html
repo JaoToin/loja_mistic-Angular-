@@ -1,5 +1,5 @@
 <div id="div-form">
-    <h2> Cadastro pessoa</h2>
+    <h1> Cadastro pessoa</h1>
     <form id="form-pessoa" (ngSubmit)="enviaDadosPessoa()">
 
         <label for="nome">NOME</label>
@@ -12,12 +12,12 @@
         <label for="data_nascimento" >Data Nascimento</label>
         <input type="date" name="data_nascimento"  [(ngModel)]="data_nascimento" id="data_nascimento" class="input02" placeholder="Informe sua data de nascimento">
 
-
+      <div id="div-sexo">
         <label for="sexo">SEXO</label>
         <input type="radio" name="sexo"  [(ngModel)]="sexo" id="sexoM" class="btnSelecao" value="M"> Masculino
         <input type="radio" name="sexo" [(ngModel)]="sexo" id="sexoF" class="btnSelecao" value="F"> Feminino
-        <input type="radio" name="sexo" [(ngModel)]="sexo" id="sexoN" class="btnSelecao" value="N"> Não se Identificar
-
+        <input type="radio" name="sexo" [(ngModel)]="sexo" id="sexoN" class="btnSelecao" value="N"> Não Declarar
+      </div>
 
         <label for="telefone">telefone</label>
         <input type="text" name="telefone"  [(ngModel)]="telefone" id="telefone" class="input02" required maxlength="15"
@@ -33,9 +33,15 @@
         <input type="password" name="senha"  [(ngModel)]="senha" id="senha" class="input02" placeholder="Informe sua senha">
 
 
-        <div id="div-btns">
+        <div id="div-bnts">
 
-            <button type="submit" id="BtnAdd" >
-              CADASTRAR
-            </button>
+         <button type="submit" id="bntAdd" >Cadastrar</button>
+
+         <button type="button" id="bntListar" (click)="direcao()">Listar Pessoas</button>
+
+         <button type="reset" id="bntLimpar" (click)="limpar()">Limpar Dados</button>
+
         </div>
+    </form>
+
+</div>

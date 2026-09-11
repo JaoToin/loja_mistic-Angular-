@@ -1,0 +1,149 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#div-lista {
+  width: 100%;
+  min-height: 650px;
+  padding: 25px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+}
+table{
+  background-color: white;
+  border-radius: 10px ;
+}
+
+h1 {
+  margin: 20px 0px 35px 0px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.8em;
+  color: #B026FF;
+  text-shadow: 0 0 8px rgba(176, 38, 255, 0.4);
+}
+
+#lista-atletas {
+  background-color: var(--cor-card, #ffffff);
+  background-color: #0d0a12;
+
+  width: 90%;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px 8px rgba(176, 38, 255, 0.4);
+  border: 1px solid rgba(176, 38, 255, 0.3);
+  display: block;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 800px;
+  margin: 0 auto;
+}
+
+caption {
+  font-size: 1.5em;
+  color: #B026FF;
+  font-weight: bold;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+  text-align: left;
+  text-shadow: 0 0 5px rgba(176, 38, 255, 0.3);
+}
+
+th {
+  background-color: #7E22CE;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 15px;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: inset 0 -2px 0 #B026FF;
+}
+
+th:first-child { border-top-left-radius: 8px; }
+th:last-child { border-top-right-radius: 8px; }
+
+td {
+  padding: 15px;
+  border-bottom: 1px solid var(--cor-borda, #E9D5FF);
+  color: var(--cor-texto, #333);
+  font-size: 0.95em;
+  text-align: center;
+}
+
+tbody tr:nth-child(even) { background-color: #F8F5FF; }
+tbody tr:hover { background-color: #F3E8FF; transition: background-color 0.2s ease; }
+
+.lnk-editar {
+  color: #9D00FF;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.lnk-excluir {
+  color: #FF0055;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+td:nth-last-child(1):hover,
+td:nth-last-child(2):hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    table {
+        padding: 15px;
+        border-radius: 8px;
+    }
+    caption {
+        font-size: 1.2em;
+        text-align: center;
+    }
+}
+#div-bnts {
+  width: 100%;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  width: 200px;
+  height: 35px;
+  cursor: pointer;
+  border: none;
+  margin: 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+#voltar {
+  background-color: #27272a;
+  color: #f4f4f5;
+  border: 1px solid #d4d4d8;
+  box-shadow: 0 0 12px rgba(212, 212, 216, 0.5);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+
+#voltar:hover, .btn-listar:hover {
+  color: #ffffff;
+  background-color: #3f3f46;
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.8);
+}

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Pessoa } from '../modelo/pessoa';
+import { Pessoa } from '../models/pessoa';
 
 @Injectable({
   providedIn: 'root',
@@ -22,41 +22,34 @@ export class Service{
     return this.http.get<Pessoa[]>(urlApi)
 
   }
-  //LISTAR Pessoa
-  listarPessoa(idPessoa: number):Observable<Pessoa>{
-    const urlApi = `http://127.0.0.1:8000/pessoas/${idPessoa}`
 
+  listarPessoa(id: number): Observable<Pessoa> {
+    const urlApi = `http://127.0.0.1:8000/pessoas/${id}`
     return this.http.get<Pessoa>(urlApi)
   }
 
-  //EXCLUIR NA API
-  excluirPessoa(Pessoa: Pessoa): Observable<Pessoa> {
-    const urlApi = `http://127.0.0.1:8000/pessoas/${Pessoa.idpessoa}`
-
+  excluirPessoa(pessoa: Pessoa): Observable<Pessoa> {
+    const urlApi = `http://127.0.0.1:8000/pessoas/${pessoa.idpessoa}`
     return this.http.delete<Pessoa>(urlApi)
+}
+
+  editarPessoa(pessoa: Pessoa): Observable<Pessoa> {
+    const urlApi = `http://127.0.0.1:8000/pessoas/${pessoa.idpessoa}`
+    return this.http.put<Pessoa>(urlApi, pessoa)
   }
 
-  //ALTERAR NA API
-  alterarPessoa(Pessoa: Pessoa):Observable<Pessoa>{
-    const urlApi = `http://127.0.0.1:8000/pessoas/${Pessoa.idpessoa}`
+  calcularIdade(data_nascimento: Date): number {
+    const hoje = new Date();
+    const nascimento = new Date(data_nascimento + 'T00:00:00');
+    let idade = hoje.getFullYear() - nascimento.getFullYear();
+    const mes = hoje.getMonth() - nascimento.getMonth();
 
-    return this.http.put<Pessoa>(urlApi, Pessoa)
-  }
+    if (mes < 0 || (mes === 0 && hoje.getDate() < nascimento.getDate())) {
+      idade--;
+    }
 
+    return idade;
 
-calcularIdade(data_nascimento: Date | string): number {
-  const dt_nascimento = new Date(data_nascimento);
-  const hoje = new Date();
-
-  let idade = hoje.getFullYear() - dt_nascimento.getFullYear();
-  const resp_calc_mes = hoje.getMonth() - dt_nascimento.getMonth();
-
-  if(resp_calc_mes < 0 || (resp_calc_mes === 0 && hoje.getDate() < dt_nascimento.getDate())){
-    idade--;
-  }
-
-  return idade;
-}}
-
+  }}
 
 

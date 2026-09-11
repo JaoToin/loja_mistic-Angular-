@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { Pessoa,  } from '../modelo/pessoa';
+import { Component, OnInit } from '@angular/core';
+import { Pessoa,  } from '../models/pessoa';
 import { Service } from '../service/pessoa-service';
 import { FormsModule } from '@angular/forms';
-import { ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 
 
@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './cadastro-component.html',
 })
 export class CadastroComponent {
+
 id = 0
 nome = ''
 cpf = ''
@@ -24,24 +25,34 @@ senha = ''
 editar = false
 idPessoa = 0
 
-constructor(private service: Service, private cdr: ChangeDetectorRef, private route: ActivatedRoute) {}
+constructor(private service: Service, private router: Router, private route: ActivatedRoute) {}
+
+ngOnInit() {
+
+  const idParam = this.route.snapshot.paramMap.get('id');
+  if (idParam) {
+    this.idPessoa = Number(idParam);
+    this.editar = true;
+    this.service.listarPessoa(this.idPessoa).subscribe({
+      next: (pessoa) => {
+        this.nome = pessoa.nome;
+        this.cpf = pessoa.cpf;
+        this.data_nascimento = pessoa.data_nascimento;
+        this.sexo = pessoa.sexo;
+        this.telefone = pessoa.telefone;
+        this.email = pessoa.email;
+        this.senha = pessoa.senha;
+      },
+      error: (err) => console.error('Erro ao buscar pessoa:', err)
+    });
+  }
+}
 
 exibeDados(){
 console.log(this.nome, this.cpf, this.data_nascimento, this.sexo, this.telefone, this.email, this.senha )
 }
-
-
-ngOnInit() {
-  this.idPessoa = Number(this.route.snapshot.paramMap.get('id'))
-
-  if (this.idPessoa > 0) {
-    this.editar = true
-    this.carregaCampo(this.idPessoa)
-  }
-}
 enviaDadosPessoa() {
   const pessoa = new Pessoa();
-  pessoa.idpessoa = this.id > 0 ? this.id : this.id;
   pessoa.nome = this.nome;
   pessoa.cpf = this.cpf;
   pessoa.sexo = this.sexo;
@@ -50,37 +61,32 @@ enviaDadosPessoa() {
   pessoa.email = this.email;
   pessoa.senha = this.senha;
 
-  this.service.cadastroPessoa(pessoa).subscribe(
-    (response) => {
-      console.log('Pessoa cadastrada com sucesso:', response);
-      this.limpar();
-    },
-    (error) => {
-      console.error('Erro ao cadastrar pessoa:', error);
-    }
-  );
+  if (this.editar) {
+
+    pessoa.idpessoa = this.idPessoa;
+    this.service.editarPessoa(pessoa).subscribe({
+      next: (response) => {
+        console.log('Pessoa atualizada com sucesso:', response);
+        this.direcao();
+      },
+      error: (error) => console.error('Erro ao atualizar pessoa:', error)
+    });
+  } else {
+
+    this.service.cadastroPessoa(pessoa).subscribe({
+      next: (response) => {
+        console.log('Pessoa cadastrada com sucesso:', response);
+        this.direcao();
+      },
+      error: (error) => console.error('Erro ao cadastrar pessoa:', error)
+    });
+  }
 
   this.exibeDados();
   this.limpar();
 }
-carregaCampo(idPessoa: number) {
-  this.service.listarPessoa(idPessoa)
-    .subscribe({
-      next: (objPessoa) => {
-        this.id = objPessoa.idpessoa
-        this.nome = objPessoa.nome
-        this.cpf = objPessoa.cpf
-        this.sexo = objPessoa.sexo
-        this.telefone = objPessoa.telefone
-        this.email = objPessoa.email
 
 
-        this.cdr.detectChanges()
-      }, error: (msgErro) => {
-        console.log("Erro ao Listar  o Pessoa ", msgErro)
-      }
-    })
-}
 limpar() {
   this.nome = ''
   this.cpf = ''
@@ -88,5 +94,13 @@ limpar() {
   this.data_nascimento = new Date()
   this.telefone = ''
   this.email = ''
+  this.senha = ''
 }
+
+direcao(){
+  this.router.navigate(['/tabela']);
 }
+
+}
+
+
